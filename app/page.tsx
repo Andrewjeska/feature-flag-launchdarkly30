@@ -56,6 +56,25 @@ export default async function Home() {
   const flagValue = await ldClient.variation('my-flag', ldContext, true)
   const duration = Date.now() - before
 
+  // Feature flag: ld-example-feature-premium-dashboard
+  // Evaluated here with the existing per-request LaunchDarkly client. The
+  // treatment adds no new behavior yet, so the value is not used and the page
+  // renders the same either way. The default is false (control), and if
+  // evaluation fails we fall back to control so the page still renders. This
+  // runs after `duration` is measured so the displayed 'my-flag' timing does
+  // not change.
+  let premiumDashboardEnabled = false
+  try {
+    premiumDashboardEnabled = await ldClient.variation(
+      'ld-example-feature-premium-dashboard',
+      ldContext,
+      false
+    )
+  } catch {
+    premiumDashboardEnabled = false
+  }
+  void premiumDashboardEnabled
+
   return (
     <Page className="flex flex-col gap-12">
       <section className="flex flex-col gap-6">
