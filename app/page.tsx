@@ -36,6 +36,23 @@ export default async function Home() {
   const flagValue = await ldClient.variation('my-flag', ldContext, true)
   const duration = Date.now() - before
 
+  // Evaluate ld-example-feature-premium-dashboard and log it only; no behavior
+  // change. Defaults to false (control) if the flag is off or evaluation fails.
+  let premiumDashboardFlag = false
+  try {
+    premiumDashboardFlag = await ldClient.variation(
+      'ld-example-feature-premium-dashboard',
+      ldContext,
+      false
+    )
+  } catch (error) {
+    console.error(
+      'Failed to evaluate ld-example-feature-premium-dashboard',
+      error
+    )
+  }
+  console.log('ld-example-feature-premium-dashboard:', premiumDashboardFlag)
+
   return (
     <Page className="flex flex-col gap-12">
       <section className="flex flex-col gap-6">
