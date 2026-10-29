@@ -57,7 +57,6 @@ jobs:
           kiro-cli chat \
             --agent flag-implementer \
             --no-interactive \
-            --trust-tools=fs_read,fs_write \
             "Task: ${TASK_DESCRIPTION}
              LaunchDarkly flag key: ${FLAG_KEY}
              Treatment variation: ${VARIATION_DETAILS}" \
