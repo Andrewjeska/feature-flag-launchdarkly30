@@ -23,6 +23,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Install Kiro CLI
         run: curl -fsSL https://cli.kiro.dev/install | bash
@@ -64,6 +66,7 @@ jobs:
 
       - name: Commit and push
         env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TASK_DESCRIPTION: ${{ inputs.task_description }}
           FLAG_KEY: ${{ inputs.flag_key }}
         run: |
@@ -85,7 +88,7 @@ jobs:
             exit 1
           fi
           $GIT commit -m "feat: ${TASK_DESCRIPTION} (flag: ${FLAG_KEY})"
-          $GIT push origin "$BRANCH"
+          $GIT push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "$BRANCH"
 
       - name: Open pull request
         env:
