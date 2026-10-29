@@ -1,3 +1,4 @@
+
 import { Text, Page, Link } from '@vercel/examples-ui'
 import { type LDClient, init } from '@launchdarkly/vercel-server-sdk'
 import { createClient } from '@vercel/edge-config'
@@ -8,6 +9,7 @@ export const metadata = {
   description:
     'An example showing how to use LaunchDarkly and Vercel. This example builds on top of the LaunchDarkly integration which syncs LaunchDarkly flags into Edge Config, so you can read them from your application near-instantly.',
 }
+
 
 export const dynamic = 'force-dynamic'
 
