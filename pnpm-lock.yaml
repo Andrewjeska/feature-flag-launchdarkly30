@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@launchdarkly/vercel-server-sdk':
-        specifier: ^1.3.3
-        version: 1.3.3(typescript@5.1.6)
-      '@vercel/edge-config':
-        specifier: ^1.1.0
-        version: 1.1.0(typescript@5.1.6)
       '@vercel/examples-ui':
         specifier: ^2.0.4
         version: 2.0.4(next@16.2.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -272,18 +266,6 @@ packages:
   '@jridgewell/trace-mapping@0.3.19':
     resolution: {integrity: sha512-kf37QtfW+Hwx/buWGMPcR60iF9ziHa6r/CZJIHbmcm4+0qrXiVdxegAH0F6yddEVQ7zdkjcGCgCzUu+BcbhQxw==}
 
-  '@launchdarkly/js-sdk-common@2.3.1':
-    resolution: {integrity: sha512-gLCrL7eLtbip5fZ3vLO5pIwv3JcCT/zH2FSGcX2uYEfzLc8Mz/H2Ug71mgpzj4RpJ4Co4M0KvY3ntiU5jXj8cg==}
-
-  '@launchdarkly/js-server-sdk-common-edge@2.2.2':
-    resolution: {integrity: sha512-uUypRZmTl72TNyQuXgcxvxDKZcHNCLcQhXUWqyf4zkCchi7vK6T6umhxR1/ToHV6rPVaeYqx8Cr3+2cgSjGrFw==}
-
-  '@launchdarkly/js-server-sdk-common@2.2.2':
-    resolution: {integrity: sha512-gFAEqC6xUbbDQavbjE25xXDruX6r9AwiCPMq5QN3qubVMjTT9DCQwcj181Wkjt3t60aDzkvZm9ZcMb4Sxwd/+g==}
-
-  '@launchdarkly/vercel-server-sdk@1.3.3':
-    resolution: {integrity: sha512-i2ZA3X6RFjesy/WeexvoCp0vS4/OlWR3WCCcvbX4+4bd96pvzXnYU3RWVwwB/38Ao5M7BGfpRQ9wEcIEqZCDgw==}
-
   '@next/env@16.2.10':
     resolution: {integrity: sha512-zLPxg9M0MEHmygpj5OuxjQ+vHMiy/K7cSp74G8ecYolmgUWw0RwN02tF56npup/+qaI8JB97hQgS/r2Hb6QwVA==}
 
@@ -399,18 +381,6 @@ packages:
   '@typescript-eslint/visitor-keys@6.4.1':
     resolution: {integrity: sha512-y/TyRJsbZPkJIZQXrHfdnxVnxyKegnpEvnRGNam7s3TRR2ykGefEWOhaef00/UUN3IZxizS7BTO3svd3lCOJRQ==}
     engines: {node: ^16.0.0 || >=18.0.0}
-
-  '@vercel/edge-config-fs@0.1.0':
-    resolution: {integrity: sha512-NRIBwfcS0bUoUbRWlNGetqjvLSwgYH/BqKqDN7vK1g32p7dN96k0712COgaz6VFizAm9b0g6IG6hR6+hc0KCPg==}
-
-  '@vercel/edge-config@1.1.0':
-    resolution: {integrity: sha512-es/4BzzKfyUilL5E1knR42MZHJqHMRfqitrnv18gVZZUha9ywrX3qNoCrPsNMJ1HS8xAAz/FJEyel7YFIDfKoQ==}
-    engines: {node: '>=14.6'}
-    peerDependencies:
-      '@opentelemetry/api': ^1.7.0
-    peerDependenciesMeta:
-      '@opentelemetry/api':
-        optional: true
 
   '@vercel/examples-ui@2.0.4':
     resolution: {integrity: sha512-wiauqJ3SDSNq7Oz7Y/N1aKemtCaIUhBSVECVMbBfx2IYrH3xqVQ7937abvsyd6UcP1Pdsxdb6zDHajQOQV3MNg==}
@@ -583,9 +553,6 @@ packages:
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
-
-  crypto-js@4.1.1:
-    resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
 
   cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
@@ -1495,14 +1462,6 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
 
-  ts-essentials@9.4.1:
-    resolution: {integrity: sha512-oke0rI2EN9pzHsesdmrOrnqv1eQODmJpd/noJjwj2ZPC3Z4N2wbjrOEqnsEgmvlO2+4fBb0a794DCna2elEVIQ==}
-    peerDependencies:
-      typescript: '>=4.1.0'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
@@ -1786,27 +1745,6 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@launchdarkly/js-sdk-common@2.3.1': {}
-
-  '@launchdarkly/js-server-sdk-common-edge@2.2.2':
-    dependencies:
-      '@launchdarkly/js-server-sdk-common': 2.2.2
-      crypto-js: 4.1.1
-
-  '@launchdarkly/js-server-sdk-common@2.2.2':
-    dependencies:
-      '@launchdarkly/js-sdk-common': 2.3.1
-      semver: 7.5.4
-
-  '@launchdarkly/vercel-server-sdk@1.3.3(typescript@5.1.6)':
-    dependencies:
-      '@launchdarkly/js-server-sdk-common-edge': 2.2.2
-      '@vercel/edge-config': 1.1.0(typescript@5.1.6)
-      crypto-js: 4.1.1
-    transitivePeerDependencies:
-      - '@opentelemetry/api'
-      - typescript
-
   '@next/env@16.2.10': {}
 
   '@next/eslint-plugin-next@13.4.19':
@@ -1901,15 +1839,6 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 6.4.1
       eslint-visitor-keys: 3.4.3
-
-  '@vercel/edge-config-fs@0.1.0': {}
-
-  '@vercel/edge-config@1.1.0(typescript@5.1.6)':
-    dependencies:
-      '@vercel/edge-config-fs': 0.1.0
-      ts-essentials: 9.4.1(typescript@5.1.6)
-    transitivePeerDependencies:
-      - typescript
 
   '@vercel/examples-ui@2.0.4(next@16.2.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)':
     dependencies:
@@ -2102,8 +2031,6 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
-
-  crypto-js@4.1.1: {}
 
   cssesc@3.0.0: {}
 
@@ -3197,10 +3124,6 @@ snapshots:
 
   ts-api-utils@1.0.2(typescript@5.1.6):
     dependencies:
-      typescript: 5.1.6
-
-  ts-essentials@9.4.1(typescript@5.1.6):
-    optionalDependencies:
       typescript: 5.1.6
 
   ts-interface-checker@0.1.13: {}
