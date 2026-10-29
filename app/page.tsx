@@ -4,7 +4,6 @@ export const metadata = {
   title: 'Vercel example',
   description: 'A minimal Next.js example on Vercel.',
 }
-export const runtime = 'edge'
 
 export default function Home() {
   return (

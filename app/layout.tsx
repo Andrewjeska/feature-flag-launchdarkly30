@@ -6,7 +6,6 @@ export const metadata = getMetadata({
   title: 'vercel-example',
   description: 'A minimal Next.js example on Vercel',
 })
-export const runtime = 'edge'
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
