@@ -41,6 +41,11 @@ jobs:
           git config user.email "kiro-agent@users.noreply.github.com"
           git config user.name "Kiro Agent"
 
+      - name: Snapshot .git state
+        run: |
+          find .git -type f -print0 | sort -z \
+            | xargs -0 sha256sum > "$RUNNER_TEMP/git-snapshot.sha256"
+
       - name: Implement the change
         env:
           KIRO_API_KEY: ${{ secrets.KIRO_API_KEY }}
@@ -62,13 +67,25 @@ jobs:
           TASK_DESCRIPTION: ${{ inputs.task_description }}
           FLAG_KEY: ${{ inputs.flag_key }}
         run: |
-          git add -A
-          if git diff --staged --quiet; then
+          # Refuse to proceed if Kiro wrote anywhere under .git/ — a tampered
+          # .git/config (core.fsmonitor, core.hooksPath, remote URL, etc.)
+          # could make the git commands below execute attacker-controlled code
+          # with GH_TOKEN in the environment.
+          find .git -type f -print0 | sort -z \
+            | xargs -0 sha256sum > "$RUNNER_TEMP/git-snapshot-after.sha256"
+          if ! diff -q "$RUNNER_TEMP/git-snapshot.sha256" "$RUNNER_TEMP/git-snapshot-after.sha256" >/dev/null; then
+            echo "::error::.git contents changed during Kiro run — refusing to commit"
+            diff "$RUNNER_TEMP/git-snapshot.sha256" "$RUNNER_TEMP/git-snapshot-after.sha256" || true
+            exit 1
+          fi
+          GIT="git -c core.fsmonitor=false -c core.hooksPath=/dev/null"
+          $GIT add -A
+          if $GIT diff --staged --quiet; then
             echo "::error::Kiro produced no changes"
             exit 1
           fi
-          git commit -m "feat: ${TASK_DESCRIPTION} (flag: ${FLAG_KEY})"
-          git push origin "$BRANCH"
+          $GIT commit -m "feat: ${TASK_DESCRIPTION} (flag: ${FLAG_KEY})"
+          $GIT push origin "$BRANCH"
 
       - name: Open pull request
         env:

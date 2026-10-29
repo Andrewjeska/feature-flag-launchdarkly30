@@ -24,6 +24,15 @@ jobs:
             echo "::error::Invalid pull request number"
             exit 1
           fi
+          # Only merge PRs opened by the Kiro experiment workflow, which pushes
+          # from branches named experiment/<flag>-<run-id>.
+          HEAD_REF=$(gh pr view "$PR_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --json headRefName --jq .headRefName)
+          if [[ ! "$HEAD_REF" =~ ^experiment/ ]]; then
+            echo "::error::PR #$PR_NUMBER head branch '$HEAD_REF' is not an experiment/* branch"
+            exit 1
+          fi
           gh pr merge "$PR_NUMBER" \
             --repo "$GITHUB_REPOSITORY" \
             --squash --delete-branch
