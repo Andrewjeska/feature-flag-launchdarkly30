@@ -56,6 +56,26 @@ export default async function Home() {
   const flagValue = await ldClient.variation('my-flag', ldContext, true)
   const duration = Date.now() - before
 
+  // Log-only evaluation of the third-party chat kill switch. No behavior is
+  // gated on this value; it defaults to false (control) on any failure.
+  let killSwitchThirdPartyChat = false
+  try {
+    killSwitchThirdPartyChat = await ldClient.variation(
+      'ld-example-kill-switch-third-party-chat',
+      ldContext,
+      false
+    )
+  } catch (err) {
+    console.error(
+      'Failed to evaluate ld-example-kill-switch-third-party-chat',
+      err
+    )
+  }
+  console.log(
+    'ld-example-kill-switch-third-party-chat variation:',
+    killSwitchThirdPartyChat
+  )
+
   return (
     <Page className="flex flex-col gap-12">
       <section className="flex flex-col gap-6">
