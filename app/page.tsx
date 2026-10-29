@@ -36,6 +36,16 @@ export default async function Home() {
   const flagValue = await ldClient.variation('my-flag', ldContext, true)
   const duration = Date.now() - before
 
+  // Evaluate and log only; no behavior change. Defaults to false (control)
+  // if the flag is off or evaluation fails.
+  const killSwitchThirdPartyChat = await ldClient
+    .variation('ld-example-kill-switch-third-party-chat', ldContext, false)
+    .catch(() => false)
+  console.log(
+    'ld-example-kill-switch-third-party-chat:',
+    killSwitchThirdPartyChat
+  )
+
   return (
     <Page className="flex flex-col gap-12">
       <section className="flex flex-col gap-6">
