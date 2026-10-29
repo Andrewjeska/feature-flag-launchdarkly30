@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@launchdarkly/node-server-sdk": "9.16.0",
     "@vercel/examples-ui": "^2.0.4",
     "next": "^16.2.0",
     "react": "^19.2.1",
